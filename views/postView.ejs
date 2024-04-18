@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../public/styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<%- include("partials/header.ejs") %>
+<body class="postViewBody">
+    <div class="postView">
+        <div class="dropdown">
+            <button onclick="dropDown()" class="dropBtn ">⚙️</button>
+            <div id="myDropdown" class="dropdown-content ">
+              <a href="/edit/<%-post.id %>">edit</a>
+              <a href="/delete/<%-post.id %>">delete</a>        
+          </div> 
+        </div>
+
+        <h2><%- post.title %></h2>
+        <p> <%- post.body %></p>
+        <div class= "metrics">
+            <p><%- post.date %></p>
+            <div class="likeIcon">
+                <img src="/images/favorite_white_24dp.svg" width="15px" >
+                <p id="<%- post.id %>-likeCount"> <%- post.likes %></p>
+            </div>
+            <div class="commentsIcon">
+                <img src="/images/chat_bubble_white_24dp.svg" width="15px">
+                <p ><%-post.comments.length %></p>
+            </div>
+
+            <form action="/<%-post.id %>/likes" method="post">
+                <button id="<%- post.id %>" name="like" class="likeButton" type="submit"  value=""> 🤍</button>
+            </form>
+        </div>
+    </div>
+    <div class="commentSection">
+        <h3>Comments</h3>
+       
+        <div >
+            <form  action="/comment/<%- post.id %>" class="createComment" method="post">
+                <label for="newComment"> New comment</label>
+                <textarea name= "newComment" > </textarea>
+                <button  class= "buttonFillAnimate commentSubmitButton" type="submit"> Post</button>
+                
+                <div class="postSubmittedContainer">
+                    <img src="/images/checkImage.png">
+                    <p>Post submitted</p>
+                </div>
+            </form>
+
+                
+            
+        </div>
+
+        <% post.comments.forEach((comment) =>{ %>
+        <div class="commentPost">
+            <P> <%= comment.comment %>.</P>
+            <div class="metrics">
+                <div class="likeIcon">
+                        <img src="/images/favorite_white_24dp.svg" width="15px" >
+                        <p id="<%=comment.id %>-likeCount"><%= comment.likes %></p>
+                </div>
+                <form action="/commentLike/<%=comment.postId%>/<%=comment.id %>" method="post">
+                    <button  name="like" id="<%=comment.id %>" type="submit" class="likeButton" value = ""> 🤍</button>
+                </form>
+            </div>
+        </div> <% }) %>
+    </div>
+
+    <script src="/indexjs.js"></script>
+</body>
+</html>

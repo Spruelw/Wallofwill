@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall of will</title>
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body>
+            <%- include("./partials/header.ejs") %>
+            <h2 class="editPageH2"> Edit post</h2>
+            <form class="submitForm" action="/edit/<%- post.id %>" method="post" >
+                <label for ="title" class="title-label">Title </label> <br>
+                <input type="text" name="title" class="title-input" value="<%- post.title %>">  <br>
+                <label for="postContent" class= "body-label">Body text</label>  <br>
+                <textarea name="postContent" class="body-input"><%- post.body %> </textarea>
+                <div class="pin-container">
+                    <label for="pin" class="pin-label">Enter 4 digit pin </label>
+
+                    <input type="text" name="pin" class="pin-input">
+                </div>
+                <input class="submit-button buttonFillAnimate" type="submit" value="Save" >
+                
+                 <div class="postSubmittedContainer">
+                        <img src="/images/checkImage.png">
+                        <p>Post updated</p>
+                </div>
+            </form><
+        <script src= "/indexjs.js"> </script>
+</body>

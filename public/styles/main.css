@@ -1,0 +1,786 @@
+*{
+     line-height: 1.2;
+    font-family: "Assistant", sans-serif;
+}
+
+:root{
+    --burgundy: #61393f;
+    --dark-burgundy: #49282d;
+    --light-burgundy: #49282d71;
+    --ligher-burgandy: #feebede6;
+    --off-white: #f1eaea;
+    
+
+}
+
+
+body{
+    background-color:  var(--burgundy);
+    margin: 0;
+
+}
+
+.header{
+  width: 100%;
+  height: 8vh;
+  min-height: 50px;
+   position: static;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--dark-burgundy);
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 5%;
+
+
+
+}
+.header h4{
+    font-size: 1.3rem;
+    font-style: italic;
+    font-weight:500 ;
+    color: white;
+    margin-left: 5%;
+    
+}
+
+.headerLinks {
+    display: flex;
+    justify-content: space-around;
+    width: 15vw;
+    min-width: 120px;
+    margin-right: 5%;
+}
+.headerLinks a{
+    position: relative;
+    color: #f6ebeb;
+    text-decoration: none;
+    font-size: .8rem;
+    width: 45%;
+    text-align: center;
+    border-left: 2px solid #a49696;
+}
+
+.headerLinks a:nth-child(2){
+    border-right: 2px solid #a49696;
+}
+.headerLinks a::after{
+    position: absolute;
+    content:"";
+    z-index: 1;
+    top:105%;
+    height: 1px;
+    left: 30%;
+    width: 40%;
+    scale: 0;
+    background-color: #f3e0df;
+    transition: all 2s;
+    border-radius: 20%;
+}
+.headerLinks a:hover::after{
+    scale: 1;
+transition: all .5s 100ms;
+}
+
+
+
+.container{
+    width: 60vw;
+   
+    text-align: center;
+    margin: auto;
+    padding-top: 0px;
+    
+    
+}
+
+
+.hero{    margin-top: 15%;
+   
+}
+
+.hero p{
+    color: #b7989d;
+    margin: 0;
+}
+h1 {
+        color: white;
+        font-size: 2rem;
+        margin-top: 0px;
+        margin-bottom: 10px;
+        font-weight: 300;
+        
+    
+}
+
+.logo{
+    background-color: azure;
+    padding: 6px;
+    border-radius: 20% 1px;
+    border-color: black;
+    
+}
+.wall{
+    background-color: #e1d0d1e6;
+    width: 100%;
+   height: auto;
+    border-radius: 7px;
+    margin-top: 150px;
+    padding-top: 2px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+    padding-left: 2%;
+    padding-right: 2%;
+    
+}
+
+.navBar{
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+    padding-top: 2px;
+    gap: 5px;
+    margin-bottom: 30px;
+
+    width: 90%;
+    
+}
+
+
+
+.wallLink{
+    
+    color:#f6ecec;
+  width: 70%;
+  height: 100%;
+    background-color: #6f454b;
+    border: 2px solid var(--burgundy);
+    border-radius: 20px;
+    
+}
+.wallLink a{
+    text-decoration: none;
+}
+
+.buttonFillAnimate{
+    position: relative;
+    z-index: 0;
+     transition: all 1s ;
+    
+}
+.buttonFillAnimate:hover{
+     transform: scaleY(1.3);
+}
+/* create button fill */
+.buttonFillAnimate::after{
+   content: "";
+   position: absolute;
+   border-radius: 20px;
+    top:-2px;
+    bottom: -2px;
+    left: -2px;
+    width: 0%;
+    background-color: #f5eaea;
+    z-index: -1;
+    transition:width ease .8s;
+}
+.buttonFillAnimate:hover::after{
+    width: 108%;
+}
+.wallLink h2 {
+       color :#f0eaea;
+       font-size: 1rem;
+       font-weight: 600;
+
+}
+.wallLink:hover h2{
+    color:var(--burgundy) ;
+}
+
+.wallLink.selected:hover::after, .createComment button:hover::after{
+    background-color: var(--burgundy);
+ 
+}
+
+
+
+.wallLink.selected{
+    background-color: var(--off-white);
+
+}
+.wallLink.selected h2{
+color:var(--burgundy);
+}
+
+.wallLink.selected:hover h2 {
+    color: var(--off-white);
+}
+
+
+
+.post {
+    width: auto;
+    position: relative;
+   height:fit-content;
+    display: flex;
+    margin-top: 40px;
+
+    background-color: var(--off-white);
+    margin: auto;
+    border-radius: 10px;
+   /*border: 1px outset var(--burgundy);
+   
+   
+    /* border-left:3px solid var(--burgundy); ;*/
+    padding-top: 5px;
+    margin-bottom: 12px;
+   
+}
+.dropBtn{ 
+  font-size: .8rem;
+  background-color: var(--light-burgundy);
+  border: 2px solid var(--burgundy);
+  border-radius: 3px;
+  opacity: .6;
+}
+
+.dropdown {
+    display: inline-block;
+position: absolute;
+    right: 5px;
+    top: 10px;
+    z-index: 2;
+  }
+
+  .dropdown:hover .dropdown-content{
+    display: block;
+  }
+.dropdown-content {
+    display:none;
+    position: absolute;
+    background-color: #a18185;
+    width: fit-content;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;}
+
+.dropdown-content a {
+    color: #fefafb;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    }
+.metrics{
+    position:absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
+    min-width: 150px;
+    height: 40px;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    font-size: .8rem;
+    color: var(--burgundy);
+    flex-shrink: 0;
+    background-color: var(--light-burgundy);
+    z-index: 1;
+  
+ 
+}
+.metrics p{
+    text-align: center;
+    font-size: .8rem;
+    font-weight: 600;
+       color :white;
+       margin: 0px;
+       opacity: .9;
+}
+.metrics form{
+    margin: 0;
+}
+
+.likeIcon , .commentsIcon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    gap: 4px;
+    
+}
+
+.likeIcon p , .commentsIcon p {
+margin-top: 0px;
+margin-bottom: 0px;
+font-size: .8rem;
+font-weight: 600;
+
+}
+ .likeButton{
+    position: relative;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--burgundy) ;
+    background-color:transparent;
+        border-radius: 10px;
+    border: var(--burgundy) solid 2px;
+    width: fit-content;
+    padding: 3px;
+    transform: scale(1);
+    transition: all .5s ease;
+}
+ 
+.likeButton:hover{
+    transform: scale(1.2);
+}
+    
+ .likeAnimationClass{
+    animation: likeAnimation 2.5s ease ;
+    background-color:#7a4950 ;
+    transition: background-color 2s; 
+ }
+    
+
+
+
+
+.content {
+    position: relative;
+    text-align :start;
+    width: 100%;
+    padding-bottom: 70px;
+    z-index: 0;
+    
+}
+.content:hover{
+    cursor: pointer;
+}
+.content h3{
+    font-size: 1.3rem;
+       color :#714b4a;
+       margin-left: 10%;
+       font-weight: 700;
+}
+
+.content p{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: .9rem;
+       color :var(--burgundy);
+       margin-bottom: 0px;
+       font-weight: 600;
+}
+
+.readMore{
+    font-size: .6rem;
+    color: red;
+}
+/* css for submit */
+.createPost{
+text-align: start;
+}
+.editPageH2{
+color: white;
+text-align: center;
+font-weight: 400;
+}
+.submitForm{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    height: fit-content;
+    margin: auto;
+    background-color:#e7dfdf;
+    margin-top:40px ;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+.createPost.submitForm{
+    background-color:#f4eeeef5;
+   border: 1px solid var(--burgundy);
+   width: 70%;
+   
+}
+.title-label, .body-label, .pin-label {
+        color: #885a59;
+        font-size: 1.4rem;
+
+}
+
+.body-input{
+    
+    min-height: 30vh;
+    background-color:white ;
+    border: 1px solid ;
+    width: auto;
+    color: var(--burgundy);
+   
+}
+
+.title-input{
+    height:auto;
+    border: 1px solid #6f454b;
+    background-color: #f7f7f7;
+    color: var(--burgundy);
+ 
+}
+
+.title-character-limit, .body-character-limit {
+font-size: .65rem;
+margin: 0px;
+margin-top: 5px;
+margin-left:90% ;
+}
+.pin-container{
+    
+    margin-bottom: 20px;
+}
+.pin-input{
+    width: 50px;
+    background-color: #ffffff;
+    border:1px solid #6f454b;
+
+}
+
+.submit-button{
+    width: 150px;
+    padding: 5px;
+    font-size: medium;
+    color:white;
+    background-color:#6f454b;
+    border: 2px var(--burgundy) solid;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.pin-container p{
+    font-size: .8rem;
+    margin-top: 0px;
+}
+.submitFormContainer{
+    position: relative;
+    width: 100%;
+}
+.postSubmittedContainer{
+    width: fit-content;
+    height: fit-content;
+   
+    display: none;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5%;
+    padding: 1%;
+    background-color: #0d150c;
+    border: 3px solid #98c895;
+    border-radius: 50px;
+    justify-content: center;
+    margin: auto;
+    z-index: 3;
+color: #98c895;
+font-size: .8rem;
+font-weight: 600;
+}
+.postSubmittedContainer img{
+    width: 15%;
+}
+
+.deletePopUp{
+   margin: auto;
+   margin-top: 5%;
+   padding-bottom: 5%;
+    width: 50%;
+    height: fit-content;
+    background-color: #efe4e6;
+        color: var(--burgundy);
+    border-radius: 20px;
+    padding: 20px;
+text-align: center;
+}
+
+
+.deletePopUp h2{
+    text-align: center;
+    margin-bottom: 15%;
+    
+}
+
+.deleteCancel , .deleteDelete {
+    width: fit-content;
+    border: 2px solid var(--burgundy);
+    padding-left:10px ;padding-right: 10px;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: #865c61;
+    color: #f9e9e9;
+font-size: .8rem;
+transition: all .5s ease;
+}
+.deleteCancel:hover , .deleteDelete:hover{
+    scale: 1.1;
+    transition: all ease .5s;
+}
+
+.deletePopUp label{
+    display: block;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.deletePinInput{
+    width: 70px ;
+}
+
+.postViewBody{
+    background-color: var(--burgundy);
+
+}
+
+.postView{
+    background-color: #eee9ea;
+    position: relative;
+    width: 70%;
+    max-width: 700px;
+    margin: auto;
+    font-size: .8rem;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+    margin-top: 10vh;
+    margin-bottom: 10%;
+    padding-left: 5%;
+
+    
+}
+.postView h2{
+color: #7a4950;
+font-weight: 600;
+margin-top: 0;
+
+}
+
+.postView p{
+    color:var(--burgundy);
+    font-weight: 500;
+    margin-bottom: 50px;
+    font-size: .9rem;
+    width: auto;
+    max-width: 75ch;
+    
+}
+.postView .metrics {
+    position: absolute;
+   flex-direction: row;
+   flex-wrap: nowrap;
+   justify-content: space-around;
+   align-items: center;
+   padding: 5px;
+   margin:0;
+   height: fit-content;
+   width: 20%;
+   min-width: 150px;
+   top:90;
+   right: 0;
+ bottom: 0;
+background-color: var(--light-burgundy);
+   border-radius: 10px;
+  
+
+}
+.postView .metrics p{
+    margin: 0;
+    font-size: .8rem;
+    color: white;
+}
+
+
+
+.postView .metrics p{
+    font-size: .65rem;
+}
+.commentSection h3{
+    color: white;
+    margin-left: 3%;
+
+}
+.createComment{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    width: 80%;
+    max-width: 600px;
+    background-color:var(--off-white); 
+
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    margin-top: 30px;
+   
+}
+.createComment label {
+    display: block;
+
+    width: 100%;
+
+    font-weight: 500;
+    color: var(--burgundy);
+    margin-bottom: 5px;
+}
+.createComment textarea{
+    height: 70px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+    background-color: #f8f3f3;
+    border:  solid 2px #b7989d;
+}
+
+
+.createComment button{
+    height: fit-content;
+   
+     width: fit-content;
+    border: var(--burgundy) solid 2px;
+    border-radius: 10px;
+    padding: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: var(--lighter-burgundy);
+    color: var(--burgundy);
+    font-weight: 600;
+}
+
+.createComment button:hover{
+    color: white;
+}
+
+.commentPost{
+    width:50% ;
+    max-width: 500px;
+    background-color: #f7eeee;
+    border-radius:10px ;
+    margin-left: 5%;
+    font-size: .9rem;
+    padding: 20px;
+    height: fit-content;
+    position: relative;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+}
+.commentPost .metrics{
+    position:absolute;
+    display: flex;
+    flex-direction: row;
+ align-items: center;
+    width:20%; 
+    min-width: 100px;
+    
+    border-radius: 10px;
+    height: 40px;
+    bottom: 0px;
+    margin: 0px ;
+    right: 0px;
+    background-color: var(--light-burgundy);
+
+}
+
+.commentPost button{
+    width: fit-content;
+    margin-bottom: 0;
+}
+ .commentPost p{
+  margin-bottom: 0px;
+  color: var(--burgundy);
+
+  
+ }
+
+ .commentPost .metrics p{
+    color: white;
+    font-size: .7rem;
+    font-weight: 200;
+ }
+
+
+ .help-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #a18185;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 5px;
+  
+ }
+ .help-container textarea{
+    margin-top: 3vh;
+    min-width: 99%;
+    height: 20vh;
+    background-color:var(--off-white) ;
+ }
+.help-container form{
+    display: flex;
+    flex-direction: column;
+}
+ .help-container .submit-button{
+  margin-top: 20px;
+ }
+ @media(max-width:800px){
+    .container{
+        width: 90%;
+    }
+    .content p {
+        font-size: .8rem;
+    }
+    .submitForm{
+        width: 80%;
+    }
+    .body-input, .title-input{
+        font-size: .7rem;
+        padding: 5px;
+    }
+
+    .postView {
+        width: 80%;
+    }
+
+    .help-container{
+        
+        width: 80%;
+        
+      
+     }
+ }
+@keyframes likeAnimation {
+    0%, 7% {
+      transform: rotate(0);
+    }
+    15% {
+      transform: rotate(-15deg);
+    }
+    20% {
+      transform: rotate(10deg);
+    }
+    25% {
+      transform: rotate(-10deg);
+    }
+    30% {
+      transform: rotate(6deg);
+    }
+    35% {
+      transform: rotate(-4deg);
+    }
+    40%, 100% {
+      transform: rotate(0);
+    }
+  }
+

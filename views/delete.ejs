@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+    <link rel="stylesheet" href="/styles/main.css">
+
+</head>
+<body> 
+    <%- include("partials/header.ejs") %>
+    <div class="deletePopUp">
+        <h2>Are you sure you want to delete this post? </h2>
+        <form action= "/delete/<%- post.id %>" method="post" >
+            <label for="pin">Enter the pin for this post</label>
+            <input class ="deletePinInput"type="text" name="pin">
+            <button class=" deleteCancel">Cancel</button>
+            <input class="submit-button deleteDelete" type="submit" value="Delete">
+            
+        </form>
+        <div class="postSubmittedContainer">
+                <img src="/images/checkImage.png">
+                <p>Post deleted</p>
+            </div>
+    </div>
+    <script src="/indexjs.js"> </script>
+</body>
+
+</html>

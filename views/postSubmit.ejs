@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall of will</title>
+    <link rel="stylesheet" href="../public/styles/main.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    
+    <div class = container>
+        <div class = hero>
+            <img class="logo" src="/images/icons8-kuromi-64.png" width="50px">
+            <h1> Wall of Will</h1>
+            <p>share a post anonymously!</p>
+        </div>
+
+        <div class=" wall">
+                <div class="navBar">
+                    <div class="wallLink  buttonFillAnimate"> <a href="/"><h2>Wall</h2></a></div> 
+                    <div class="wallLink create selected buttonFillAnimate"> <a method="get" href="/create"><h2>Create Post</h2></a> </div>
+                        <div class="wallLink buttonFillAnimate"> <a href="/help"><h2>Help</h2></a></div>
+                </div>
+
+                <div class="submitFormContainer">
+                    <form class="createPost submitForm " action="/create" method="post">
+                        <label for ="title" class="title-label"> Title</label> <br>
+                        <input type="text" name="title" class="title-input">
+                        <p class="title-character-limit">/150</p>
+                        <label for="postContent" class= "body-label">Body text</label>  <br>
+                        <textarea name="postContent" class="body-input"> </textarea>
+                        <p class="body-character-limit">/40000</p>
+                            <div class="pin-container">
+                                <label for="pin" class="pin-label">Enter a 4 digit pin </label>
+                                <p>(is needed to edit or delete a post)</p>
+                                <input type="text" name="pin" class="pin-input">
+                            </div>
+                        <input type="submit" class="submit-button buttonFillAnimate" value="Submit Post" >
+                        <div class="postSubmittedContainer">
+                            <img src="/images/checkImage.png">
+                            <p>Post submitted</p>
+                        </div>
+                    </form>
+
+                    
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/indexjs.js"></script>
+<a target="_blank" href="https://icons8.com/icon/21068/checkmark">Check</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

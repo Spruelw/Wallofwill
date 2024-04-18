@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall of will</title>
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<%- include ("./partials/header.ejs") %>
+    <div class ="help-container" >  
+        <h1>Help</h1>
+        <form method="post" action="/help">
+            <textarea name="body" placeholder="Describe your issue. If the issue is with a post, be sure to include the post title "></textarea>
+            <input type="submit" class="submit-button buttonFillAnimate">
+
+            <div class="postSubmittedContainer">
+                <img src="/images/checkImage.png">
+                <p>Ticket submitted</p>
+            </div>
+        </form>
+    </div>
+    <script src="/indexjs.js"></script>
+</body>
+</html>
