@@ -36,6 +36,8 @@ function newPost(title, body, pin){
     console.log(this)
 }
 
+new newPost("Welcome🥳🥳.","Welcome to my first live project site. Feel free to share a post!", "4241")
+
 
 function deletePost(id){ //delete post entered
  var newPostList = postList.filter((post) => post.id != id);
