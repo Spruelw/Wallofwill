@@ -759,6 +759,9 @@ background-color: var(--light-burgundy);
         
       
      }
+     .createPost.submitForm{
+        width:90%;
+     }
  }
 @keyframes likeAnimation {
     0%, 7% {
