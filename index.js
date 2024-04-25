@@ -3,7 +3,7 @@ import * as fs from "fs";
 
 
 const app = express();
-const port = 3010;
+const port = process.env.PORT;
 
 app.use(express.urlencoded({extended: true}));
 
