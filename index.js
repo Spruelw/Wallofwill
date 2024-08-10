@@ -273,6 +273,6 @@ app.post("/help", (req, res) => {
     res.redirect("/");
   }, "3000");
 });
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`listening on port ${port}`);
 });
