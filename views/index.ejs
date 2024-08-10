@@ -1,71 +1,90 @@
 <!DOCTYPE ejs>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wall of will</title>
-    <link rel="stylesheet" href="./styles/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <%- include('partials/header.ejs') %>
-    <div class = container>
-        <div class = hero>
-            <img class="logo" src="/images/icons8-kuromi-64.png" width="50px">
-            <h1> Wall of Will</h1>
-            <p>Share a post anonymously!</p>
-        </div>
+    <div class="container">
+      <div class="hero">
+        <img class="logo" src="/images/icons8-kuromi-64.png" width="50px" />
+        <h1>Wall of Will</h1>
+        <p>Share a post anonymously!</p>
+      </div>
 
-        <div class="wall">
-            <div class="navBar">
-            <div class="wallLink selected buttonFillAnimate"> <a href="/help"><h2>Wall</h2></a></div> 
-            <div class="wallLink create buttonFillAnimate"> <a method="get" href="/create"><h2>Create Post</h2>  </a></div>
-                <div class="wallLink buttonFillAnimate"> <a href="/help"><h2>Help</h2></a></div>
+      <div class="wall">
+        <div class="navBar">
+          <div class="wallLink selected buttonFillAnimate">
+            <a href="/help"><h2>Wall</h2></a>
+          </div>
+          <div class="wallLink create buttonFillAnimate">
+            <a method="get" href="/create"><h2>Create Post</h2> </a>
+          </div>
+          <div class="wallLink buttonFillAnimate">
+            <a href="/help"><h2>Help</h2></a>
+          </div>
+        </div>
+        <% postList.forEach((post) => { %>
+        <div class="post" id="<%- post.id %>">
+          <div class="content" id="<%- post.id %>">
+            <h3><%- post.title %></h3>
+            <% if (post.body.length > 200){ %>
+            <p>
+              <%- post.body.slice(0, 200) %>
+              <span class="readMore"> (Click to read more)</span>
+            </p>
+            <% }else{ %>
+            <p><%- post.body.slice(0, 200) %></p>
+            <% } %>
+          </div>
+          <div class="dropdown">
+            <button onclick="dropDown()" class="dropBtn">⚙️</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="/edit/<%- post.id %>">edit</a>
+              <a href="/delete/<%- post.id %>">delete</a>
             </div>
-            <% postList.forEach((post) => { %>
-            <div class = "post" id="<%- post.id %>" >
-                <div class="content" id="<%- post.id %>" >
-                    <h3><%- post.title %></h3>
-                    <% if (post.body.length > 200){ %>
-                        <p><%- post.body.slice(0, 200) %> <span class = "readMore"> (Click to read more)</span></p>
-                    <% }else{ %> 
-                        <p><%- post.body.slice(0, 200) %></p>
-                    <% } %>
-                </div>
-                <div class="dropdown">
-                                <button onclick="dropDown()" class="dropBtn ">⚙️</button>
-                                <div id="myDropdown" class="dropdown-content ">
-                                  <a href="/edit/<%- post.id %>">edit</a>
-                                  <a href="/delete/<%- post.id %>">delete</a>        
-                              </div> 
-                    </div>
+          </div>
 
-                    <div class= "metrics">
-                        <p><%- post.date %></p>
-                        <div class="likeIcon">
-                            <img src="/images/favorite_white_24dp.svg" width="15px" >
-                            <p id="<%- post.id %>-likeCount"> <%- post.likes %></p>
-                        </div>
-                        <div class="commentsIcon">
-                            <img src="/images/chat_bubble_white_24dp.svg" width="15px">
-                            <p ><%-post.comments.length %></p>
-                        </div>
-                        
-                       <form action="/<%-post.id %>/likes" method="post">
-                        <button id="<%- post.id %>" name="like" class="likeButton" type="submit"  value=""> 🤍</button>
-                     </form>
-                </div>
-            </div> <% }) %>
+          <div class="metrics">
+            <p><%- post.date %></p>
+            <div class="likeIcon">
+              <img src="/images/favorite_white_24dp.svg" width="15px" />
+              <p id="<%- post.id %>-likeCount"><%- post.likes %></p>
+            </div>
+            <div class="commentsIcon">
+              <img src="/images/chat_bubble_white_24dp.svg" width="15px" />
+              <p><%-post.comments.length %></p>
+            </div>
+
+            <form action="/<%-post.id %>/likes" method="post">
+              <button
+                id="<%- post.id %>"
+                name="like"
+                class="likeButton"
+                type="submit"
+                value=""
+              >
+                🤍
+              </button>
+            </form>
+          </div>
         </div>
-            
+        <% }) %>
+      </div>
     </div>
     <script src="/indexjs.js"></script>
-</body>
-
+  </body>
 </html>
 <footer class="footer">
-    <a  href="https://icons8.com/icon/Dovzd6PbVQqJ/kuromi">Kuromi</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>"
+  <a href="https://icons8.com/icon/Dovzd6PbVQqJ/kuromi">Kuromi</a> icon by
+  <a target="_blank" href="https://icons8.com">Icons8</a>"
 </footer>
